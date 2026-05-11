@@ -1,0 +1,15 @@
+!/bin/bash
+if [[ ! -d $1 ]]
+then
+        echo "Directory doesnt exist"
+        exit 1
+fi
+
+filesCount=$(find $1 -type f | wc -l)
+
+#Bcz of -mindepth 1 whatever the argument i will be passing as directory it will be not counted as a directory, only count of nested directory inside passed argument at read time.
+
+dirCount=$(find $1 -mindepth 1 -type d | wc -l)
+
+echo "Total No of Directory present in $1 location is : $dirCount"
+echo "Total no of files present in $1 location is : $filesCount"
